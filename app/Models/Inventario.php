@@ -16,7 +16,8 @@ class Inventario extends Model
         'id_producto',
         'cantidad',
         'fecha',
-        'tipo_movimiento'
+        'tipo_movimiento',
+        'codigoinv'
     ];
      public $timestamps = false;
 }

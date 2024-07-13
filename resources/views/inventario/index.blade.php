@@ -35,6 +35,12 @@
                             </select>
                         </div>
                     </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="form-group">
+                            <label for="text">Codigo de Inventario </label>
+                            <input type="text" class="form-control" id="codInv" name="codInv" placeholder="Ingrese el codigo de Inventario" require />
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -262,53 +268,66 @@
     const guardarTodosBtn = document.getElementById('guardar-todos');
     guardarTodosBtn.addEventListener('click', function() {
         const tipoMoviento = document.getElementById('tipo').value;
-        if (tipoMoviento == "Selecione una Opcion") {
-            alert('Tienes que Seleccionar un Tipo de Moviento')
+        const codInv = document.getElementById('codInv').value;
+        if (codInv == "") {
+            alert('Tienes que ingresar el codigo de inventario')
         } else {
+            if (tipoMoviento == "Selecione una Opcion") {
+                alert('Tienes que Seleccionar un Tipo de Moviento')
+            } else {
 
 
 
-            const filas = tbody.querySelectorAll('tr');
-            const productos = [];
+                const filas = tbody.querySelectorAll('tr');
+                const productos = [];
 
-            filas.forEach(fila => {
-                const columnas = fila.querySelectorAll('td');
-                const producto = {
-                    id: columnas[0].innerText,
-                    nombre: columnas[1].innerText,
-                    codigoBarra: columnas[2].innerText,
-                    cantidad: parseInt(columnas[3].innerText),
-                    tipo: tipoMoviento
-                };
-                productos.push(producto);
-            });
+                filas.forEach(fila => {
+                    const columnas = fila.querySelectorAll('td');
+                    const producto = {
+                        id: columnas[0].innerText,
+                        nombre: columnas[1].innerText,
+                        codigoBarra: columnas[2].innerText,
+                        cantidad: parseInt(columnas[3].innerText),
+                        tipo: tipoMoviento,
+                        codInv: codInv
+                    };
+                    productos.push(producto);
+                });
 
-            fetch(`{{ route('createInventario')}}`, {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        productos: productos
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
+                fetch(`{{ route('createInventario')}}`, {
+                        method: 'POST',
+                        body: JSON.stringify({
+                            productos: productos
+                        }),
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
 
-                    console.log("inventario:", data)
-                    if (data.success) {
-                        alert('Todos los productos se guardaron correctamente');
-                        location.reload();
-                    } else {
-                        alert('Error al guardar los productos');
-                        eliminarTodaTabla();
-                        agregarProductoArray(data.body);
+                        console.log("inventario:", data)
+                        if (data.success) {
+                            alert('Todos los productos se guardaron correctamente');
+                            location.reload();
+                        } else {
+                            if (data.codinv) {
+                                alert('Error el codigo de inventario repetido');
+                            } else {
+                                alert('Error al guardar los productos');
+                                eliminarTodaTabla();
+                                agregarProductoArray(data.body);
+                            }
 
-                    }
-                })
-                .catch(error => console.error('Error:', error));
+
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+
         }
+
     });
 
 
