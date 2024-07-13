@@ -64,7 +64,8 @@ class InventarioController extends Controller
                     $saveIn->id_producto = intval($request->productos[$i]['id']);
                     $saveIn->cantidad = $request->productos[$i]['cantidad'];
                     $saveIn->fecha = $formattedDate;
-                    $saveIn->tipo_movimiento = "inventario";
+                    $saveIn->tipo_movimiento = $request->productos[$i]['tipo'];
+                    $saveIn->codinv = $codInv;
                     
                     $saveIn->save();
     
