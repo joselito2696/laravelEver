@@ -5,23 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Producto extends Model
+class Inventario extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id';
     // protected $primaryKey = 'idmedida';
-    protected $table ='productos';
+    protected $table ='inventarios';
 
     protected $fillable = [
-        'nombre',
-        'descripcion',
-        'precio',
-        'id_categoria',
-        'precioventa',
-        'codbarra',
-        'stock',
-        'comprometido'
+        'id_producto',
+        'cantidad',
+        'fecha',
+        'tipo_movimiento'
     ];
      public $timestamps = false;
 }
-

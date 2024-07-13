@@ -45,8 +45,7 @@
                 <!-- <small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone
                 else.</small> -->
               </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
+            </div>   <div class="col-md-6 col-lg-4">
               <div class="form-group">
                 <label for="largeSelect">Categorias</label>
                 <select class="form-select form-control-lg" id="categoria" name="categoria" require>
@@ -57,6 +56,7 @@
                 </select>
               </div>
             </div>
+         
 
           </div>
         </div>

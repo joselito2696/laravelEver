@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\ProductoController;
 
 Route::get('/', function () {
@@ -27,6 +28,11 @@ Route::post('createProducto', [ProductoController::class, 'createProducto'])->na
 Route::get('eliminarProducto.{id}', [ProductoController::class, 'eliminarProducto'])->name('eliminarProducto');
 Route::get('modificarProducto.{id}', [ProductoController::class, 'modificarProducto'])->name('modificarProducto');
 Route::put('updateProducto.{id}', [ProductoController::class, 'updateProducto'])->name('updateProducto');
+
+//Ruta Inventario
+Route::get('inventario', [InventarioController::class, 'index'])->name('index');
+Route::get('product.{barcode}',  [InventarioController::class, 'getProductByBarcode'])->name('product');
+Route::post('createInventario', [InventarioController::class, 'createInventario'])->name('createInventario');
 
 
 Route::middleware('auth')->group(function () {

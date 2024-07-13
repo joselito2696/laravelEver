@@ -74,4 +74,6 @@ class ProductoController extends Controller
                 ->with('msj', 'Error al eliminar');
         }
     }
+
+    
 }

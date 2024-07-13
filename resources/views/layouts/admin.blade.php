@@ -40,6 +40,8 @@
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="css/demo.css" />
+
+    @yield('script')
   </head>
   <body>
     <div class="wrapper">
