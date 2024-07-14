@@ -6,6 +6,7 @@ use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\ProductoController;
+use App\Http\Controllers\VentaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,6 +34,9 @@ Route::put('updateProducto.{id}', [ProductoController::class, 'updateProducto'])
 Route::get('inventario', [InventarioController::class, 'index'])->name('index');
 Route::get('product.{barcode}',  [InventarioController::class, 'getProductByBarcode'])->name('product');
 Route::post('createInventario', [InventarioController::class, 'createInventario'])->name('createInventario');
+
+//Ruta Ventas
+Route::get('venta', [VentaController::class, 'index'])->name('index');
 
 
 Route::middleware('auth')->group(function () {

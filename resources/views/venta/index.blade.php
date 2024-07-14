@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 <div class="page-header">
-    <h3 class="fw-bold mb-3">Inventario</h3>
+    <h3 class="fw-bold mb-3">Realizar Ventas</h3>
 </div>
 
 @if(session()->has('msj'))
@@ -15,31 +15,22 @@
 <div class="alert alert-danger" role="alert">{{session('error')}}</div>
 @endif
 
-
-
-<!-- <form action="{{route('createProducto')}}" method="POST">
-    @csrf -->
 <div class="row">
     <div class="col-md-12">
         <div class="card">
+            <div class="card-header">
+                <div class="card-title">Buscar Clientes</div>
+            </div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-6 col-lg-4">
                         <div class="form-group">
-                            <label for="largeSelect">Tipo movimiento</label>
-                            <select class="form-select form-control-lg" id="tipo" name="tipo" require>
-                                <option value="Selecione una Opcion"> Selecione una Opcion</option>
-                                <option value="Entrada Inventario"> Entrada Inventario</option>
-                                <option value="Salida Inventario"> Salida Inventario</option>
-
-                            </select>
+                            <label for="text">CI o NIT</label>
+                            <input type="text" class="form-control" id="ci" name="ci" placeholder="Ingrese el CI o NIT cliente" require />
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div class="form-group">
-                            <label for="text">Codigo de Inventario </label>
-                            <input type="text" class="form-control" id="codInv" name="codInv" placeholder="Ingrese el codigo de Inventario" require />
-                        </div>
+                    <div class="card-action">
+                        <button onclick="searchCliente()" class="btn btn-success">Buscar</button>
                     </div>
                 </div>
 
@@ -48,6 +39,64 @@
         </div>
     </div>
 </div>
+
+
+
+<input type="hidden" id="idcliente" name="idcliente" />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Datos del Cliente</div>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="form-group">
+                            <label for="text">CI oNIT Cliente</label>
+                            <input type="text" class="form-control" id="ci" name="ci"  readonly />
+                            <!-- <small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone
+                else.</small> -->
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="form-group">
+                            <label for="text">Nombre Cliente</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre"  readonly />
+                            <!-- <small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone
+                else.</small> -->
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="form-group">
+                            <label for="text">Apellido Paterno </label>
+                            <input type="text" class="form-control" id="paterno" name="paterno" readonly />
+                            <!-- <small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone
+                else.</small> -->
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="form-group">
+                            <label for="text">Apellido Materno</label>
+                            <input type="text" class="form-control" id="materno" name="materno"  readonly />
+                            <!-- <small id="emailHelp2" class="form-text text-muted">We'll never share your email with anyone
+                else.</small> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
 
 
 <div class="row">
