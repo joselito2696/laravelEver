@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\CotizacionController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\VentaController;
@@ -32,15 +33,23 @@ Route::put('updateProducto.{id}', [ProductoController::class, 'updateProducto'])
 
 //Ruta Inventario
 Route::get('inventario', [InventarioController::class, 'index'])->name('index');
+Route::get('viewDetalle.{codInv}', [InventarioController::class, 'viewDetalle'])->name('viewDetalle');
+Route::get('createInventario', [InventarioController::class, 'viewInventario'])->name('createInventario');
 Route::get('product.{barcode}',  [InventarioController::class, 'getProductByBarcode'])->name('product');
 Route::post('createInventario', [InventarioController::class, 'createInventario'])->name('createInventario');
 
 //Ruta Ventas
 Route::get('venta', [VentaController::class, 'index'])->name('index');
 Route::get('cliente.{idCliente}',  [VentaController::class, 'searchCliente'])->name('cliente');
-Route::get('viewCrear',  [VentaController::class, 'viewCrear'])->name('viewCrear');
+Route::get('createVenta',  [VentaController::class, 'viewCrear'])->name('createVenta');
 Route::post('createVenta', [VentaController::class, 'createVenta'])->name('createVenta');
 
+
+//Ruta Cotizacion viewDetalleCotizacion
+Route::get('cotizacion', [CotizacionController::class, 'index'])->name('index');
+Route::get('create', [CotizacionController::class, 'create'])->name('create');
+Route::post('createCotizacion', [CotizacionController::class, 'createCotizacion'])->name('createCotizacion');
+Route::get('viewDetalleCotizacion.{id}', [CotizacionController::class, 'viewDetalleCotizacion'])->name('viewDetalleCotizacion');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

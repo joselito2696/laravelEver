@@ -2,14 +2,11 @@
 @section('content')
 
 <div class="page-header">
-    <h3 class="fw-bold mb-3">Inventario Realizados</h3>
+    <h3 class="fw-bold mb-3">ID Cotizacion: {{$cotizacions[0]->id}} </h3>
+    <h3 class="fw-bold mb-3">/ Cliente: {{$cotizacions[0]->name}} </h3>
+    <h3 class="fw-bold mb-3"> / Fecha: {{$cotizacions[0]->fecha}}</h3>
 </div>
-@if(session()->has('msj'))
-<div class="alert alert-success" role="alert">{{session('msj')}}</div>
-@endif
-@if(session()->has('error'))
-<div class="alert alert-danger" role="alert">{{session('error')}}</div>
-@endif
+
 
 
 
@@ -17,38 +14,39 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Listado de Inventario</h4>
-                <a href="{{route('createInventario' )}}"><button type="button" class="btn btn-icon btn-round btn-success"><i class="fas fa-box"></i> </button></a>
+                <h4 class="card-title">Detalle de Cotizacion</h4>
+
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="basic-datatables" class="display table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>Codigo</th>
-                                <th>Fecha</th>
-                                <th>Tipo Movimiento</th>
-                                <th>Acciones</th>
+                                <th>ID Cotizacion</th>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Precio</th>
+                                <th>Sub Total</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
-                                <th>Codigo</th>
-                                <th>Fecha</th>
-                                <th>Tipo Movimiento</th>
-                                <th>Acciones</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th>Total</th>
+                                <th>{{$cotizacions[0]->total}}</th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach($inventario as $item)
+                            @foreach($detallecotizacions as $item)
                             <tr>
-                                
-                                <td>{{$item->codigoinv}}</td>
-                                <td>{{$item->fecha}}</td>
-                                <td>{{$item->tipo_movimiento}}</td>
-                                <td>
-                                <a href="{{route('viewDetalle',  $item->codigoinv )}}"><button type="button" class="btn btn-icon btn-round btn-success"><i class="fas fa-eye"></i> </button></a>
-                                </td>
+
+                                <td>{{$item->id_cotizacion}}</td>
+                                <td>{{$item->nombre}}</td>
+                                <td>{{$item->cantidad}}</td>
+                                <td>{{$item->precio_unitario}}</td>
+                                <td>{{$item->subtotal}}</td>
                             </tr>
                             @endforeach
                         </tbody>

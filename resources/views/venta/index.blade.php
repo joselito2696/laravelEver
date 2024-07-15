@@ -18,7 +18,7 @@
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">Listado de Ventas</h4>
-                <a href="{{route('viewCrear' )}}"><button type="button" class="btn btn-icon btn-round btn-success"><i class="fas fa-shopping-cart"></i> </button></a>
+                <a href="{{route('createVenta' )}}"><button type="button" class="btn btn-icon btn-round btn-success"><i class="fas fa-shopping-cart"></i> </button></a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -46,7 +46,7 @@
                                 <td>{{$item->fecha}}</td>
                                 <td>{{$item->name}}</td>
                                 <td>
-                                    <a href="{{route('eliminarCategoria',  $item->id )}}"><button type="button" class="btn btn-icon btn-round btn-danger"><i class="fas fa-trash-alt"></i> </button></a>
+                                    <a href=""><button type="button" class="btn btn-icon btn-round btn-success"><i class="fas fa-eye"></i> </button></a>
                                 </td>
                             </tr>
                             @endforeach

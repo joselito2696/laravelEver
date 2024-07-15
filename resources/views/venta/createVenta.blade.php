@@ -389,6 +389,7 @@
 
     const tbody = document.querySelector('#basic-datatables tbody');
     const guardarTodosBtn = document.getElementById('guardar-todos');
+    
     guardarTodosBtn.addEventListener('click', function() {
         const idcliente = document.getElementById('idcliente').value;
         // const codInv = document.getElementById('codInv').value;

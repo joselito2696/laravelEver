@@ -1,15 +1,15 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="page-header">
-    <h3 class="fw-bold mb-3">Inventario Realizados</h3>
+<!-- <div class="page-header">
+    <h3 class="fw-bold mb-3">Detalle de Inventario</h3>
 </div>
 @if(session()->has('msj'))
 <div class="alert alert-success" role="alert">{{session('msj')}}</div>
 @endif
 @if(session()->has('error'))
 <div class="alert alert-danger" role="alert">{{session('error')}}</div>
-@endif
+@endif -->
 
 
 
@@ -17,38 +17,42 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Listado de Inventario</h4>
-                <a href="{{route('createInventario' )}}"><button type="button" class="btn btn-icon btn-round btn-success"><i class="fas fa-box"></i> </button></a>
+                <h4 class="card-title">Detalle de Inventario</h4>
+               
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="basic-datatables" class="display table table-striped table-hover">
                         <thead>
                             <tr>
+                            <th>Id</th>
                                 <th>Codigo</th>
                                 <th>Fecha</th>
+                                <th>Producto</th>
+                                <th>cantidad</th>
                                 <th>Tipo Movimiento</th>
-                                <th>Acciones</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
+                                <th>Id</th>
                                 <th>Codigo</th>
                                 <th>Fecha</th>
+                                <th>Producto</th>
+                                <th>cantidad</th>
                                 <th>Tipo Movimiento</th>
-                                <th>Acciones</th>
                             </tr>
                         </tfoot>
                         <tbody>
                             @foreach($inventario as $item)
                             <tr>
-                                
+
+                                <td>{{$item->id}}</td>
                                 <td>{{$item->codigoinv}}</td>
                                 <td>{{$item->fecha}}</td>
+                                <td>{{$item->nombre}}</td>
+                                <td>{{$item->cantidad}}</td>
                                 <td>{{$item->tipo_movimiento}}</td>
-                                <td>
-                                <a href="{{route('viewDetalle',  $item->codigoinv )}}"><button type="button" class="btn btn-icon btn-round btn-success"><i class="fas fa-eye"></i> </button></a>
-                                </td>
                             </tr>
                             @endforeach
                         </tbody>
