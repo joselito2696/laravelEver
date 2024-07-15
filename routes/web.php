@@ -37,6 +37,9 @@ Route::post('createInventario', [InventarioController::class, 'createInventario'
 
 //Ruta Ventas
 Route::get('venta', [VentaController::class, 'index'])->name('index');
+Route::get('cliente.{idCliente}',  [VentaController::class, 'searchCliente'])->name('cliente');
+Route::get('viewCrear',  [VentaController::class, 'viewCrear'])->name('viewCrear');
+Route::post('createVenta', [VentaController::class, 'createVenta'])->name('createVenta');
 
 
 Route::middleware('auth')->group(function () {

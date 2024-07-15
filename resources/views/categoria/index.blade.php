@@ -112,6 +112,7 @@
 
 
 @endsection
+
 @section('script2')
 <!-- jQuery Scrollbar -->
 <script src="js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
